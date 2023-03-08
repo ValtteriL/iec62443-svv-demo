@@ -1,0 +1,10 @@
+---
+- name: Setup jobs
+  community.general.jenkins_job:
+    config: "{{ lookup('template', 'templates/{{ item }}.xml.j2') }}"
+    name: "{{ item }}"
+    token: "{{ token }}"
+    url: "{{ jenkins_uri }}"
+    user: "{{ username }}"
+  with_items:
+    - SVV-1

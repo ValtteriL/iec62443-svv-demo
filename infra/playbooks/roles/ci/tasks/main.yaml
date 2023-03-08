@@ -14,3 +14,6 @@
   ansible.builtin.import_tasks:
     file: install-jenkins.yaml
 
+- name: Include jenkins job setup
+  ansible.builtin.import_tasks:
+    file: setup-jenkins-jobs.yaml
