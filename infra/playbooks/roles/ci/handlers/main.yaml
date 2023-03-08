@@ -1,19 +1,6 @@
-- name: Restart nginx
+- name: Restart jenkins
   ansible.builtin.systemd:
-    name: nginx
-    state: restarted
-    enabled: true
-
-- name: Restart fileservice
-  ansible.builtin.systemd:
-    name: fileservice
-    state: restarted
-    enabled: true
-    daemon_reload: true
-
-- name: Restart postresql
-  ansible.builtin.systemd:
-    name: postgresql
+    name: jenkins
     state: restarted
     enabled: true
     daemon_reload: true

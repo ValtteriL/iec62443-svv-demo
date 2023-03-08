@@ -69,3 +69,4 @@
     - build-pipeline-plugin
     - docker-workflow
     - robot
+  notify: Restart jenkins
