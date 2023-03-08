@@ -5,3 +5,6 @@ setup-ci:
     	infra/playbooks/setup-ci.yaml \
 		-i "${HOST},"
 
+.PHONY: test-svv-1
+test-svv-1:
+	@robot tests/TestSuite.robot
