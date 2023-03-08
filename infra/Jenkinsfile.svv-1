@@ -1,0 +1,22 @@
+pipeline {
+
+    agent {
+        dockerfile {
+            filename 'Dockerfile.agent'
+            dir 'infra'
+        }
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'make test-svv-1'
+            }
+        }
+    }
+}

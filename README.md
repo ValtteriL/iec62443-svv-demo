@@ -8,3 +8,10 @@ Install Jenkins on a server, install required plugins, and setup Jenkins jobs
 ```
 make setup-ci HOST=<IP of the server>
 ```
+
+## Run tests
+
+SVV-1
+```
+make test-svv-1
+```
