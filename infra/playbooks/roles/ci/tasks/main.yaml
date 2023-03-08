@@ -14,10 +14,3 @@
   ansible.builtin.import_tasks:
     file: install-jenkins.yaml
 
-- name: Allow Jenkins in
-  ufw:
-    comment: allow jenkins registry in
-    direction: in
-    to_port: 8080
-    rule: allow
-    proto: tcp

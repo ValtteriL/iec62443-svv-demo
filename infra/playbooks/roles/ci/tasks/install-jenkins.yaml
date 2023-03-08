@@ -27,6 +27,14 @@
     pkg:
     - jenkins
 
+- name: Allow Jenkins in
+  ufw:
+    comment: allow jenkins registry in
+    direction: in
+    to_port: 8080
+    rule: allow
+    proto: tcp
+
 - name: Allow Jenkins to use Docker without sudo
   block:
     - name: Ensure group "docker" exists
