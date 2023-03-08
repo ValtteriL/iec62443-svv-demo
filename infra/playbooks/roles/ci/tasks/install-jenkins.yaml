@@ -1,0 +1,41 @@
+---
+- name: Install requirements
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+    - apt-utils
+    - sudo
+    - openjdk-11-jre
+    - git
+    - software-properties-common
+
+- name: Add Jenkins package repository
+  block:
+    - name: apt key
+      ansible.builtin.get_url:
+        url:  https://pkg.jenkins.io/debian-stable/jenkins.io.key
+        dest: /usr/share/keyrings/jenkins-keyring.asc
+
+    - name: apt source
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/"
+        state: present
+
+- name: Install Jenkins package
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+    - jenkins
+
+# allow jenkins to use docker without sudo
+- name: Ensure group "docker" exists
+  ansible.builtin.group:
+    name: docker
+    state: present
+
+- name: Add Jenkins to docker group
+  ansible.builtin.user:
+    name: jenkins
+    groups: docker
+    append: true
+

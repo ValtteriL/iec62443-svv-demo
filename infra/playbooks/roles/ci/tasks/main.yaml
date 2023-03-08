@@ -1,0 +1,23 @@
+---
+
+- name: Install base requirements
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+    - ufw
+
+- name: Include docker installation
+  ansible.builtin.import_tasks:
+    file: install-docker.yaml
+
+- name: Include jenkins installation
+  ansible.builtin.import_tasks:
+    file: install-jenkins.yaml
+
+- name: Allow Jenkins in
+  ufw:
+    comment: allow jenkins registry in
+    direction: in
+    to_port: 8080
+    rule: allow
+    proto: tcp
