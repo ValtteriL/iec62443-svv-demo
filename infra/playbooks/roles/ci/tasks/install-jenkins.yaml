@@ -27,15 +27,37 @@
     pkg:
     - jenkins
 
-# allow jenkins to use docker without sudo
-- name: Ensure group "docker" exists
-  ansible.builtin.group:
-    name: docker
-    state: present
+- name: Allow Jenkins to use Docker without sudo
+  block:
+    - name: Ensure group "docker" exists
+      ansible.builtin.group:
+        name: docker
+        state: present
 
-- name: Add Jenkins to docker group
-  ansible.builtin.user:
-    name: jenkins
-    groups: docker
-    append: true
+    - name: Add Jenkins to docker group
+      ansible.builtin.user:
+        name: jenkins
+        groups: docker
+        append: true
 
+- name: Get Jenkins password
+  block:
+    - name: Record Jenkins password
+      ansible.builtin.command: cat /var/jenkins_home/secrets/initialAdminPassword
+      register: result
+
+    - name: Print password console
+      ansible.builtin.debug:
+        var: result
+
+- name: Wait for Jenkins post installation steps are done
+  ansible.builtin.pause:
+    prompt: "Walk through Jenkins post installation and install recommended plugins"
+
+- name: Install necessary plugins
+  community.general.jenkins_plugin:
+    name: "{{ item }}"
+  with_items:
+    - build-pipeline-plugin
+    - docker-workflow
+    - robot
