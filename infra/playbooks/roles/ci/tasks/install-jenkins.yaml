@@ -56,15 +56,17 @@
 
     - name: Print password console
       ansible.builtin.debug:
-        var: result
+        var: result.stdout
 
 - name: Wait for Jenkins post installation steps are done
   ansible.builtin.pause:
-    prompt: "Walk through Jenkins post installation and install recommended plugins"
+    prompt: "Unlock Jenkins at http://{{ ansible_host }}:8080 with the password above and install recommended plugins. Skip creation of new account"
 
 - name: Install necessary plugins
   community.general.jenkins_plugin:
     name: "{{ item }}"
+    url_username: admin
+    url_password: "{{ result.stdout }}"
   with_items:
     - build-pipeline-plugin
     - docker-workflow
