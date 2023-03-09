@@ -51,7 +51,7 @@
 - name: Get Jenkins password
   block:
     - name: Record Jenkins password
-      ansible.builtin.command: cat /var/jenkins_home/secrets/initialAdminPassword
+      ansible.builtin.command: cat /var/lib/jenkins/secrets/initialAdminPassword
       register: result
 
     - name: Print password console
