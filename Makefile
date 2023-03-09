@@ -7,4 +7,4 @@ setup-ci:
 
 .PHONY: test-svv-1
 test-svv-1:
-	@robot tests/TestSuite.robot
+	@robot --nostatusrc tests/TestSuite.robot

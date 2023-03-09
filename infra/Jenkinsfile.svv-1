@@ -13,9 +13,14 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Deploy') {
+        stage('Run tests') {
             steps {
                 sh 'make test-svv-1'
+            }
+        }
+        stage('Publish test results') {
+            steps {
+                robot archiveDirName: 'robot-plugin', outputPath: '', overwriteXAxisLabel: ''
             }
         }
     }
