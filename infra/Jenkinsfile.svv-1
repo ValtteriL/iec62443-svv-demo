@@ -1,0 +1,27 @@
+pipeline {
+
+    agent {
+        dockerfile {
+            filename 'Dockerfile.agent'
+            dir 'infra'
+        }
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Run tests') {
+            steps {
+                sh 'make test-svv-1'
+            }
+        }
+        stage('Publish test results') {
+            steps {
+                robot archiveDirName: 'robot-plugin', outputPath: '', overwriteXAxisLabel: ''
+            }
+        }
+    }
+}

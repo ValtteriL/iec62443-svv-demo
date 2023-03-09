@@ -1,0 +1,74 @@
+---
+- name: Install requirements
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+    - apt-utils
+    - sudo
+    - openjdk-11-jre
+    - git
+    - software-properties-common
+
+- name: Add Jenkins package repository
+  block:
+    - name: apt key
+      ansible.builtin.get_url:
+        url:  https://pkg.jenkins.io/debian-stable/jenkins.io.key
+        dest: /usr/share/keyrings/jenkins-keyring.asc
+
+    - name: apt source
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/"
+        state: present
+
+- name: Install Jenkins package
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+    - jenkins
+
+- name: Allow Jenkins in
+  ufw:
+    comment: allow jenkins registry in
+    direction: in
+    to_port: 8080
+    rule: allow
+    proto: tcp
+
+- name: Allow Jenkins to use Docker without sudo
+  block:
+    - name: Ensure group "docker" exists
+      ansible.builtin.group:
+        name: docker
+        state: present
+
+    - name: Add Jenkins to docker group
+      ansible.builtin.user:
+        name: jenkins
+        groups: docker
+        append: true
+
+- name: Get Jenkins password
+  block:
+    - name: Record Jenkins password
+      ansible.builtin.command: cat /var/lib/jenkins/secrets/initialAdminPassword
+      register: result
+
+    - name: Print password console
+      ansible.builtin.debug:
+        var: result.stdout
+
+- name: Wait for Jenkins post installation steps are done
+  ansible.builtin.pause:
+    prompt: "Unlock Jenkins at http://{{ ansible_host }}:8080 with the password above and install recommended plugins. Skip creation of new account"
+
+- name: Install necessary plugins
+  community.general.jenkins_plugin:
+    name: "{{ item }}"
+    url_username: admin
+    url_password: "{{ result.stdout }}"
+  with_items:
+    - build-pipeline-plugin
+    - docker-workflow
+    - robot
+  notify: Restart jenkins

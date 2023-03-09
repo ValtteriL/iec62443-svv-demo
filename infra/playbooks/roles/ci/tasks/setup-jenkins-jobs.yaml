@@ -1,0 +1,27 @@
+---
+- name: Record Jenkins password
+  ansible.builtin.command: cat /var/lib/jenkins/secrets/initialAdminPassword
+  register: result
+
+- name: Install requirements
+  block:
+    - name: Install python3-pip
+      ansible.builtin.apt:
+        update_cache: yes
+        state: latest
+        pkg:
+          - python3-pip
+
+    - name: Install python-jenkins
+      ansible.builtin.pip:
+        name: python-jenkins
+
+- name: Setup jobs
+  community.general.jenkins_job:
+    config: "{{ lookup('template', 'templates/{{ item }}.xml.j2') }}"
+    name: "{{ item }}"
+    password: "{{ result.stdout }}"
+    url: "http://127.0.0.1:8080"
+    user: "admin"
+  with_items:
+    - SVV-1
