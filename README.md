@@ -47,3 +47,15 @@ SVV-1
 ```
 make test-svv-1
 ```
+
+
+## Notes
+
+SVV contains the following requirements:
+1. [Security requirements testing (SVV-1)](SVV-1.md)
+2. Threat mitigation testing (SVV-2)
+3. Vulnerability testing (SVV-3)
+4. Penetration testing (SVV-4)
+5. Independence of testers (SVV-5)
+
+Out of these, SVV-1, SVV-2, SVV-3 and perhaps SVV-4 have content that can be automated.
