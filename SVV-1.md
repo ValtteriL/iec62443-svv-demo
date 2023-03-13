@@ -103,4 +103,11 @@ Possible functional test cases:
 - Test greeting generator with valid input (correct password, some name)
 
 
+#### CR 1.3 Account management
+
+The component only has a single user. It can be managed by changing its password. 
+The password is changed by modifying the password environment variable and restarting the component.
+
+Possible functional test cases:
+- Test greeting generator with valid input (correct password, some name), change password, Retry with the new password
 
