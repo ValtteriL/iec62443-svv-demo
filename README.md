@@ -26,9 +26,10 @@ Jenkins will be used as the automation hub.
 - ansible
 - make
 - python3-pip
+- php
 
 ```
-apt install -y make python3-pip
+apt install -y make python3-pip php7.4
 pip install --user ansible
 ```
 
@@ -48,6 +49,24 @@ SVV-1
 make test-svv-1
 ```
 
+## Component X
+
+The imaginary component X is as simple as possible, while still being useful for demostration purposes.
+
+It is thus a simple web application, that generates greetings. User of the application provides their name and password, and the application will print "Greetings $NAME!".
+It also includes a modifiable system use notification, as required by the standard.
+
+We aim to protect the component against unintentional or accidental misuse. Therefore we are aiming for Security Level 1 (SL1).
+
+Usage:
+```
+export PASSWORD=<some password>
+export USE_NOTICE=<some text for system use notification>
+make run-component
+
+# the application is now available at http://localhost:8000 and you can generate greetings with the password you entered as env
+```
+
 
 ## Notes
 
@@ -59,3 +78,4 @@ SVV contains the following requirements:
 5. Independence of testers (SVV-5)
 
 Out of these, SVV-1, SVV-2, SVV-3 and perhaps SVV-4 have content that can be automated.
+

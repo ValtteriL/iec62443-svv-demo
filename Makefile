@@ -8,3 +8,7 @@ setup-ci:
 .PHONY: test-svv-1
 test-svv-1:
 	@robot --nostatusrc tests/TestSuite.robot
+
+.PHONY: run-component
+run-component:
+	@php -S localhost:8000 product/index.php
