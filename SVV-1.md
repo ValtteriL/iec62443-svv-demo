@@ -111,3 +111,7 @@ The password is changed by modifying the password environment variable and resta
 Possible functional test cases:
 - Test greeting generator with valid input (correct password, some name), change password, Retry with the new password
 
+#### CR 1.4 Identifier management
+
+The component only has a single user, which is impemented as only a password. It contains no user identifiers. Therefore this requirement is not applicable.
+
