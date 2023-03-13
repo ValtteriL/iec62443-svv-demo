@@ -58,7 +58,7 @@ The contents of these requirements are visible in the following table:
 
 | Security Requirement (SR) title | Requirement |
 | --- | --- |
-|CR 1.1 Human and user identification and authentication|The component shall provide capability to identify an authenticate all human users on all interfaces capable of human user access.|
+|CR 1.1 Human and user identification and authentication|The component shall provide capability to identify and authenticate all human users on all interfaces capable of human user access.|
 |CR 1.3 Account management|Components shall provide the capability to support the management of all accounts.|
 |CR 1.4 Identifier management|Components shall provide the capability to integrate into a system that supports the management of identifiers and/or provide the capability to support the management of identifiers directly.|
 |CR 1.5 Authenticator management|Components shall provide the capability to: support the use of initial authenticator content; support the recognition of changes to default authenticators made at installation time; function properly with periodic authenticator change/refresh operation; and protect authenticators from unauthorized disclosure and modification when stored, used and transmitted.|
@@ -92,3 +92,15 @@ The contents of these requirements are visible in the following table:
 |CR 7.4 Control system recovery and reconstruction|Components shall provide the capability to be recovered and reconstituted to a known secure state after a disruption or failure.|
 |CR 7.6 Network and security configuration settings|Components shall provide the capability to be configured according to recommended network and security configurations as described in guidelines provided by the control system supplier. The component shall provide an interface to the currently deployed network and security configuration settings.|
 |CR 7.7 Least functionality|Components shall provide the capability to specifically restrict the use of unnecessary functions, ports, protocols and/or services.|
+
+### Security requirements applicability
+
+#### CR 1.1 Human and user identification and authentication
+
+The component has a web interface, which requires password authentication to use. The user identification and authentication is based on a password, there is only a sigle user thus no username is required.
+
+Possible functional test cases:
+- Test greeting generator with valid input (correct password, some name)
+
+
+
