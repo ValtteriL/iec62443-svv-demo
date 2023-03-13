@@ -115,3 +115,11 @@ Possible functional test cases:
 
 The component only has a single user, which is impemented as only a password. It contains no user identifiers. Therefore this requirement is not applicable.
 
+#### CR 1.5 Authenticator management
+
+The only authenticator in the component is the password. There are no default passwords, user must choose their own password when starting the component.
+
+If no password is chosen, the component will not work.
+
+Possible functional test cases:
+- Test that the application does not work if no password is set
