@@ -15,17 +15,21 @@
     $use_notice = getenv("USE_NOTICE");
 
     // abort if no password set
-    if(!$password)
-    {
+    if (!$password) {
         http_response_code(500);
         print("PASSWORD env not set");
         exit;
     }
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST')
-    {
-        if (isset($_POST['name']) && isset($_POST['password']))
-        {
+    // abort if no password is not strong enough
+    if (strlen($password) < 8) {
+        http_response_code(500);
+        print("Password is too weak");
+        exit;
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['name']) && isset($_POST['password'])) {
             $post_name = $_POST['name'];
             $post_password = $_POST['password'];
 
@@ -35,9 +39,7 @@
             }
 
             printf("<h1>Greetings %s!</h1>", htmlspecialchars($post_name, ENT_QUOTES, 'UTF-8'));
-        }
-        else
-        {
+        } else {
             http_response_code(400);
             exit;
         }

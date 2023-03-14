@@ -62,7 +62,7 @@ The contents of these requirements are visible in the following table:
 |CR 1.3 Account management|Components shall provide the capability to support the management of all accounts.|
 |CR 1.4 Identifier management|Components shall provide the capability to integrate into a system that supports the management of identifiers and/or provide the capability to support the management of identifiers directly.|
 |CR 1.5 Authenticator management|Components shall provide the capability to: support the use of initial authenticator content; support the recognition of changes to default authenticators made at installation time; function properly with periodic authenticator change/refresh operation; and protect authenticators from unauthorized disclosure and modification when stored, used and transmitted.|
-|CR 1.7 Strength of password-based authentication|Components shall provide or integrate into a system that provides the capability to enforce configurable password strength according to internationally recognized and proven password guidelines. |
+|CR 1.7 Strength of password-based authentication|Components shall provide or integrate into a system that provides the capability to enforce configurable password strength according to internationally recognized and proven password guidelines.|
 |CR 1.10 Authenticator feedback|Component shall provide the capability to obscure feedback of authenticator information during the authentication process.|
 |CR 1.11 Unsuccessful login attempts|When a component provides an authentication capability the component shall provide the capability to: enforce a limit of a configurable number of consecutive invalid access attempts by any user during a configurable time period ; and deny access for a specified period of time or until unlocked by an administrator.|
 |CR 1.12 System use notification|Component shall provide the capability to display a system use notification message before authenticating. The system use notification message shall be configurable by authorized personnel.|
@@ -123,3 +123,13 @@ If no password is chosen, the component will not work.
 
 Possible functional test cases:
 - Test that the application does not work if no password is set
+
+#### CR 1.7 Strength of password-based authentication
+
+The component follows NIST SP800-63-2 in its passwords. The standard only mandates that user-chosen passwords are at least 8 characters in length.
+
+If the chosen password does not fulfill this requirement, the component will not work.
+
+Possible functional test cases:
+- Test that the application does not work with password shorther than 8 characters
+
