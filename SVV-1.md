@@ -133,3 +133,13 @@ If the chosen password does not fulfill this requirement, the component will not
 Possible functional test cases:
 - Test that the application does not work with password shorther than 8 characters
 
+#### CR 1.10 Authenticator feedback
+
+The password field in the component is a html form input of type "password". Its value is obscured by default.
+No tests seem required to verify this standard behavior.
+
+If the password is incorrect, the component will fail with HTTP status 400. 
+There are no usernames, thus the behavior cannot leak valid usernames.
+
+
+
