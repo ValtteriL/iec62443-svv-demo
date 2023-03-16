@@ -148,4 +148,11 @@ The component allows 5 incorrect password guesses within 30 minute period. If th
 Possible functional test cases:
 - Attempt 5 incorrect passwords, verify that the account is locked, restart the application and verify its no longer locked
 
+#### CR 1.12 System use notification
+
+The component contains a system use notification, which can be modified by authorized personner through setting an environment variable.
+
+Possible functional test cases:
+- Set system use notification, verify it is visible
+
 
