@@ -163,3 +163,8 @@ Possible functional test cases:
 - Verify anonymous user is unable to use the greeting functionality
 - Verify authenticated user is able to use the greeting functionality
 
+#### CR 2.2 Wireless use control
+
+The component does not support usage through wireless interfaces. Therefore no functional tests are needed.
+
+
