@@ -155,4 +155,11 @@ The component contains a system use notification, which can be modified by autho
 Possible functional test cases:
 - Set system use notification, verify it is visible
 
+#### CR 2.1 Authentication enforcement
+
+The component has only a single user, that is allowed to use the one single functionality in it.
+
+Possible functional test cases:
+- Verify anonymous user is unable to use the greeting functionality
+- Verify authenticated user is able to use the greeting functionality
 
