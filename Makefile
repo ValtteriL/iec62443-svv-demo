@@ -11,4 +11,4 @@ test-svv-1:
 
 .PHONY: run-component
 run-component:
-	@php -S localhost:8000 product/index.php
+	@rm product/db/database.sqlite && php -S localhost:8000 product/index.php

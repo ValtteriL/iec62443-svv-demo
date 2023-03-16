@@ -141,5 +141,11 @@ No tests seem required to verify this standard behavior.
 If the password is incorrect, the component will fail with HTTP status 400. 
 There are no usernames, thus the behavior cannot leak valid usernames.
 
+#### CR 1.11 Unsuccessful login attempts
+
+The component allows 5 incorrect password guesses within 30 minute period. If there are 5 incorrect attempts, the account is locked until the end of the 30min period. The locking can be reversed by authorized personnel by restarting the application.
+
+Possible functional test cases:
+- Attempt 5 incorrect passwords, verify that the account is locked, restart the application and verify its no longer locked
 
 
