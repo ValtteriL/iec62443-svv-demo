@@ -3,12 +3,10 @@
 require 'vendor/autoload.php';
 
 use App\Database as Database;
+use App\Logger;
 
 $db = new Database();
-
-// get the table list
-$attempts = $db->getAttempts();
-
+$logger = new Logger("app.log");
 
 ?>
 
@@ -30,6 +28,7 @@ $attempts = $db->getAttempts();
     // abort if no password set
     if (!$password) {
         http_response_code(500);
+        $logger->logInvalidConfig();
         print("PASSWORD env not set");
         exit;
     }
@@ -37,6 +36,7 @@ $attempts = $db->getAttempts();
     // abort if no password is not strong enough
     if (strlen($password) < 8) {
         http_response_code(500);
+        $logger->logInvalidConfig();
         print("Password is too weak");
         exit;
     }
@@ -48,6 +48,7 @@ $attempts = $db->getAttempts();
 
             // check if account has been locked
             if ($db->isAccountLocked()) {
+                $logger->logAccountLocked();
                 http_response_code(400);
                 exit;
             }
@@ -55,6 +56,7 @@ $attempts = $db->getAttempts();
             if (strcmp($post_password, $password) !== 0) {
                 // incorrect password
                 $db->recordFailedAttempt(); // insert new failed attempt to db
+                $logger->logInvalidPassword();
                 http_response_code(400);
                 exit;
             }
@@ -62,11 +64,13 @@ $attempts = $db->getAttempts();
             // successful login
 
             $db->clearFailedAttempts(); // remove all failed attempts
+            $logger->logSuccesfulGreeting();
             printf("<h1>Greetings %s!</h1>", htmlspecialchars($post_name, ENT_QUOTES, 'UTF-8'));
         } else {
 
             // invalid input
 
+            $logger->logInvalidInput();
             http_response_code(400);
             exit;
         }

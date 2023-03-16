@@ -176,3 +176,16 @@ The component does not utilize mobile code technologies. According to NIST SP 80
 
 The component does not implement sessions. Therefore no functional tests are needed.
 
+#### CR 2.8 Auditable events
+
+The component generates audit log of events relevant to security of relevant events in the given categories. Each log entry contains timestamp, source, category, type, event id, and event result. The event result is contained in the event type.
+
+Possible functional test cases:
+- Verify missing password env will result in invalid config log entry
+- Verify too weak password env will result in invalid config log entry
+- Verify successful greeting generation will generate success log entry
+- Verify invalid password env will result in invalid password log entry
+- Verify locked acccount will result in account locked log entry
+- Verify invalid input will result in invalid input log entry
+
+

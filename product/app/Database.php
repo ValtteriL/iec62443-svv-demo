@@ -43,22 +43,6 @@ class Database {
     }
 
     /**
-     * get the table list in the database
-     */
-    public function getAttempts() {
-
-        $stmt = $this->pdo->query("SELECT *
-                                   FROM login_attempts
-                                   ORDER BY ts");
-        $attempts = [];
-        while ($row = $stmt->fetch(\PDO::FETCH_OBJ)) {
-            $attempts[] = $row;
-        }
-
-        return $attempts;
-    }
-
-    /**
      * Insert a new attempt into the login_attempts table
      * @return the id of the new login attempt
      */
