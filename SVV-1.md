@@ -167,4 +167,9 @@ Possible functional test cases:
 
 The component does not support usage through wireless interfaces. Therefore no functional tests are needed.
 
+#### CR 2.4 Mobile code
+
+The component does not utilize mobile code technologies. According to NIST SP 800-53, HTML5 counts as mobile code, but as the component does not utilize Javascript at all, we do not see it as mobile code.
+
+
 
