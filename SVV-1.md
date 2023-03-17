@@ -197,7 +197,6 @@ The component will continue to function even if the audit logging functionality 
 Possible functional test cases:
 - Verify greeting generation works even if the log file is read only
 
-
 #### CR 2.10 Response to audit processing failures
 
 The component will continue to function even if the audit logging functionality fails to work.
@@ -211,5 +210,13 @@ All audit log entries the component generates contain a unix timestamp. Unix tim
 Possible functional test cases:
 - Verify log records contain unix timestamp
 
+#### CR 2.12 Non-repudiation
+
+Audit log records contain the IP and port of the client that did some action. This may be used to identify which client did which action.
+
+As the component contains only a single account that may be shared among users, it is not possible to determine the human user based on authorization.
+
+Possible functional test cases:
+- Verify log records contain client IP and port
 
 
