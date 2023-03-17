@@ -198,3 +198,11 @@ Possible functional test cases:
 - Verify greeting generation works even if the log file is read only
 
 
+#### CR 2.10 Response to audit processing failures
+
+The component will continue to function even if the audit logging functionality fails to work.
+
+CR 2.9 covers the testing of this requirement.
+
+
+
