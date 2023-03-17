@@ -204,5 +204,12 @@ The component will continue to function even if the audit logging functionality 
 
 CR 2.9 covers the testing of this requirement.
 
+#### CR 2.11 Timestamps
+
+All audit log entries the component generates contain a unix timestamp. Unix timestamp captures both date and time.
+
+Possible functional test cases:
+- Verify log records contain unix timestamp
+
 
 
