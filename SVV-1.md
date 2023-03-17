@@ -188,4 +188,13 @@ Possible functional test cases:
 - Verify locked acccount will result in account locked log entry
 - Verify invalid input will result in invalid input log entry
 
+#### CR 2.9 Audit storage capacity
+
+The component is designed to be run on a common server and its audit logs are stored into a file on disk. The disk space is not on the component's responsibility, but the server administrator's.
+
+The component will continue to function even if the audit logging functionality fails to work. Failure could be caused by for example disk space running out.
+
+Possible functional test cases:
+- Verify greeting generation works even if the log file is read only
+
 
