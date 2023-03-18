@@ -229,4 +229,7 @@ The one mechanism that the component uses as a protection against malicious code
 Possible functional test cases:
 - Verify input with HTML markup is sanitized
 
+#### CR 3.3 Security functionality verification
+
+The security functionality verification is already covered by the test cases defined for other Security Requirements.
 
