@@ -222,6 +222,11 @@ Possible functional test cases:
 
 The transmitted information is not protected, it goes on plain HTTP. As a compensating countermeasure, the component listens only on loopback interface, which prevents others from being able to manipulate the traffic.
 
+#### CR 3.2 Protection from malicious code
 
+The one mechanism that the component uses as a protection against malicious code is input sanitization. Input sanitization prevents for example XSS attacks against the application.
+
+Possible functional test cases:
+- Verify input with HTML markup is sanitized
 
 
