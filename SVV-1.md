@@ -171,7 +171,6 @@ The component does not support usage through wireless interfaces. Therefore no f
 
 The component does not utilize mobile code technologies. According to NIST SP 800-53, HTML5 counts as mobile code, but as the component does not utilize Javascript at all, we do not see it as mobile code.
 
-
 #### CR 2.5 Session lock
 
 The component does not implement sessions. Therefore no functional tests are needed.
@@ -218,5 +217,11 @@ As the component contains only a single account that may be shared among users, 
 
 Possible functional test cases:
 - Verify log records contain client IP and port
+
+#### CR 3.1 Communication integrity
+
+The transmitted information is not protected, it goes on plain HTTP. As a compensating countermeasure, the component listens only on loopback interface, which prevents others from being able to manipulate the traffic.
+
+
 
 
