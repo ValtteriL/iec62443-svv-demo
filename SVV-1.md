@@ -240,4 +240,19 @@ The component supports integrity checks on the software. The the checksums of th
 Possible functional test cases:
 - Verify checksum calculation works
 
+#### CR 3.5 Input validation
+The only externally-controllable inputs in the component are:
+1. Password from environment variable
+2. System use notice from environment variable
+3. User name as post data
+4. Password as post data
+
+The password from environment variable is validated by checking that it exists and that it is sufficiently long.
+The system use notice does not affect the action of the component.
+The user name from post data is not validated, but it is sanitized before printing out. It does not affect the action of the component.
+The password from post data is simply compared to the one taken from environment variable, thus validating it is not necessary.
+
+Possible functional test cases (already covered by previous test cases):
+- Test that the application does not work if no password is set
+- Test that the application does not work with password shorther than 8 characters
 

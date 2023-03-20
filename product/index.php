@@ -81,7 +81,7 @@ $logger = new Logger("app.log");
     <section>
         <h2>Use notice</h2>
         <textbox>
-            <?php print($use_notice); ?>
+            <?php print(htmlspecialchars($use_notice, ENT_QUOTES, 'UTF-8')); ?>
         </textbox>
     </section>
     <section>
