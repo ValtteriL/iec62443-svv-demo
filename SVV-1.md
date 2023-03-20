@@ -233,3 +233,11 @@ Possible functional test cases:
 
 The security functionality verification is already covered by the test cases defined for other Security Requirements.
 
+#### CR 3.4 Software and information integrity
+
+The component supports integrity checks on the software. The the checksums of the make, php and composer files can be provided for each version. Users can then recalculate the checksums and compare with the provided ones.
+
+Possible functional test cases:
+- Verify checksum calculation works
+
+

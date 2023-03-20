@@ -12,3 +12,7 @@ test-svv-1:
 .PHONY: run-component
 run-component:
 	@rm product/db/database.sqlite && php -S localhost:8000 product/index.php
+
+.PHONY: checksum
+checksum:
+	@find Makefile product/ -type f| xargs sha512sum
