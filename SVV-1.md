@@ -259,3 +259,12 @@ Possible functional test cases (already covered by previous test cases):
 #### CR 3.6 Deterministic output
 
 The component is not connected to automation process physically or logically.
+
+#### CR 3.7 Error handling
+
+No error messages displayed to the user disclose details that make attacker's life easier.
+The two error messages displayed by the component are related to the password environment variable not being set, or password being too weak.
+
+Possible functional test cases:
+- Test that if no password is set, the component shows only message "PASSWORD env not set"
+- Test that if the password env is shorther than 8 characters, the component shows only message "Password is too weak"
