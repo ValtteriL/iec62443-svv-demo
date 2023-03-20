@@ -268,3 +268,9 @@ The two error messages displayed by the component are related to the password en
 Possible functional test cases:
 - Test that if no password is set, the component shows only message "PASSWORD env not set"
 - Test that if the password env is shorther than 8 characters, the component shows only message "Password is too weak"
+
+#### CR 4.1 Information confidentiality
+
+The only confidential information handled by the component is the password environment variable. Protecting environment variables at rest is OS dependent and out of scope of the component.
+The password is not transmitted at all.
+
