@@ -256,3 +256,6 @@ Possible functional test cases (already covered by previous test cases):
 - Test that the application does not work if no password is set
 - Test that the application does not work with password shorther than 8 characters
 
+#### CR 3.6 Deterministic output
+
+The component is not connected to automation process physically or logically.
