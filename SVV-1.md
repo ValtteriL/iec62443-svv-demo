@@ -324,3 +324,12 @@ The component can be reset to the latest known secure state.
 Possible functional test cases:
 - Mess up files, reset it, verify the component works
 
+#### CR 7.6 Network and security configuration settings
+
+The component's network settings cannot be configured, as they are vital part of the security posture. Deviating from the default configuration would make the component vulnerable.
+
+The security configuration of the component (the password environment variable) can be configured within the limits of the password policy. There is no default value for the password.
+
+Possible functional test cases:
+- Test that the application does not work if no password is set
+- Test that the application does not work with password shorther than 8 characters
