@@ -278,4 +278,11 @@ The password is not transmitted at all.
 
 The component does not use encryption, as it is not required. The only confidential piece of information is the password, which is not stored to disk at all. In transit the password is not transferred over untrusted networks.
 
+#### CR 5.1 Network segmentation
+
+The component's network is segmented to allow access only from localhost.
+
+Possible functional test cases:
+- Verify that the component is accessible at localhost
+- Verify that the component is not accessible at the IP address of the host machine
 
