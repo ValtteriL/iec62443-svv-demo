@@ -293,3 +293,13 @@ The component produces audit log file "app.log" with 644 permissions. This means
 Possible functional test cases:
 - Verify the audit log has permissions 644
 
+#### CR 7.1 Denial of service protection
+
+The essential function of the component is greeting generation. The possible DoS attacks directly against the component include Slow HTTP and flooding the greeting generation with incorrect passwords to lock out the user.
+
+The Slow HTTP attacks can be mitigated, but the account lockout not without considerable additional effort. The fact that the service is only accessible at localhost is seen as at least partly compensating countermeasure.
+
+Possible functional test cases:
+- Verify the greeting generation works under Slow HTTP attack
+
+
