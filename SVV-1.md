@@ -333,3 +333,7 @@ The security configuration of the component (the password environment variable) 
 Possible functional test cases:
 - Test that the application does not work if no password is set
 - Test that the application does not work with password shorther than 8 characters
+
+#### CR 7.7 Least functionality
+
+The component provides access to only the greeting generation, and nothing more. The greeting generation usage is also limited to the authenticated user. There are no extra functions to be disabled.
