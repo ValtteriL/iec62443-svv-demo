@@ -274,3 +274,8 @@ Possible functional test cases:
 The only confidential information handled by the component is the password environment variable. Protecting environment variables at rest is OS dependent and out of scope of the component.
 The password is not transmitted at all.
 
+#### CR 4.3 Use of cryptography
+
+The component does not use encryption, as it is not required. The only confidential piece of information is the password, which is not stored to disk at all. In transit the password is not transferred over untrusted networks.
+
+
