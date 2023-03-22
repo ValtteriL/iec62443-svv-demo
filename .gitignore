@@ -198,3 +198,4 @@ __pycache__
 # component related
 product/db/
 app.log
+backup.tar.gz

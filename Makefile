@@ -16,3 +16,7 @@ run-component:
 .PHONY: checksum
 checksum:
 	@find Makefile product/ -type f| xargs sha512sum
+
+.PHONY: backup
+backup:
+	@git archive --format=tar.gz --output=backup.tar.gz HEAD

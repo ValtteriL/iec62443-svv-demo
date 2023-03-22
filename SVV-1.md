@@ -309,3 +309,11 @@ As the component is only a web application, operating system level security func
 The security functionality in the application capable of consuming resources is logging (disk space, I/O). Logging is done whenever the service is used. Rate limiting by for example source IP would reduce the risk of it being used in resource exhaustion attack. However, as the component is accessible form only localhost, this would rate limit also legitimate users. Another way would be to rate limit by a cookie or session, but as the component does utilize sessions, it is not seen as an alternative.
 
 An attacker capable of accessing the component on localhost likely has access to the underlying host. From there they can mount more effective attacks for consuming disk space and I/O without involvement with the component.
+
+#### CR 7.3 Control system backup
+
+The component can be backed up and the backup process has been defined. The backups don't contain any application data or secrets.
+
+Possible functional test cases:
+- Verify the component backup process works
+
