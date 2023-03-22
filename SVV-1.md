@@ -302,4 +302,10 @@ The Slow HTTP attacks can be mitigated, but the account lockout not without cons
 Possible functional test cases:
 - Verify the greeting generation works under Slow HTTP attack
 
+#### CR 7.2 Resource management
 
+As the component is only a web application, operating system level security functions are out of scope.
+
+The security functionality in the application capable of consuming resources is logging (disk space, I/O). Logging is done whenever the service is used. Rate limiting by for example source IP would reduce the risk of it being used in resource exhaustion attack. However, as the component is accessible form only localhost, this would rate limit also legitimate users. Another way would be to rate limit by a cookie or session, but as the component does utilize sessions, it is not seen as an alternative.
+
+An attacker capable of accessing the component on localhost likely has access to the underlying host. From there they can mount more effective attacks for consuming disk space and I/O without involvement with the component.
