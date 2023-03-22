@@ -20,3 +20,7 @@ checksum:
 .PHONY: backup
 backup:
 	@git archive --format=tar.gz --output=backup.tar.gz HEAD
+
+.PHONY: reset
+reset:
+	@git fetch origin && git reset --hard origin/main

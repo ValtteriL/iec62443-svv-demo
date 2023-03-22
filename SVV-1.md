@@ -317,3 +317,10 @@ The component can be backed up and the backup process has been defined. The back
 Possible functional test cases:
 - Verify the component backup process works
 
+#### CR 7.4 Control system recovery and reconstruction
+
+The component can be reset to the latest known secure state.
+
+Possible functional test cases:
+- Mess up files, reset it, verify the component works
+
