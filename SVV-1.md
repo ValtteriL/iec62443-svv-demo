@@ -286,3 +286,10 @@ Possible functional test cases:
 - Verify that the component is accessible at localhost
 - Verify that the component is not accessible at the IP address of the host machine
 
+#### CR 6.1 Audit log accessibility
+
+The component produces audit log file "app.log" with 644 permissions. This means the log is only writeable by the user running the component, and readable by all others. The logs are available on disk for users on the host machine.
+
+Possible functional test cases:
+- Verify the audit log has permissions 644
+
